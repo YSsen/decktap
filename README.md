@@ -20,3 +20,6 @@
 2. Controller.tsx是主页面，配置按钮；
 3. hooks是协议，约定操作码；
 4. lan.js实现各操作码具体操作
+
+
+<img width="375" height="666" alt="Snipaste_2025-09-15_15-24-58" src="https://github.com/user-attachments/assets/757ae7ca-f977-41bc-911a-378a64fda979" />
