@@ -8,7 +8,29 @@ interface ConnectionStatus {
 
 export enum WebSocketCommand {
     PREV = 'prev',
-    NEXT = 'next'
+    NEXT = 'next',
+    PAUSE = 'pause',
+    CLOSE = 'close',
+    F11 = 'f11',
+    UP = 'up',
+    DOWN = 'down',
+    LEFT = 'left',
+    RIGHT = 'right',
+    CLICK = 'click',
+    PAGEUP = 'pageup',
+    PAGEDOWN = 'pagedown',
+    ENLARGE = 'enlarge',
+    RESET = 'reset',
+    ALL = 'all',
+    NEXTP = 'nextp',
+    FORWARD = 'forward',
+    BACK = 'back',
+    TWICE = 'twice',
+    NORMAL = 'normal',
+    DANMU = 'danmu',
+    PREI = 'prei',
+    NEXTI = 'nexti',
+    LOVE = 'love'
   }
 
 export function useWebSocket() {

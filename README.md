@@ -1,107 +1,22 @@
-# DeckTap (LAN MVP)
+使用说明：  
+1. 文件"start.cmd"能快捷启动前后端服务。运行start.cmd后会出现二维码，手机扫描即可打开页面（保证内网通畅）；  
+2. 文件"远程控制"是快捷方式，右键添加到开始屏幕用的；  
+3. 页面功能说明：  
+- MousePanel：打开弹窗，双击阴影处关闭；上下左右是修改鼠标位置，不是键盘的方向键；
+- 切换程序：alt+tab
+- 从preTab开始往下的按键都用于网页操作：
+  - preTab：ctrl+shift+tab
+  - NextTab: ctrl+tab
+  - CloseTab：ctrl+w
+  - Pause：空格，暂停视频
+  - 视频全屏：按键F，b站快捷键
+  - 快进快退：方向键
+  - 放大还原：ctrl+'+'和ctrl+0
+  - 倍速：ctrl+1/2，b站快捷键
+  - 上/下一P、关弹幕、点赞：b站快捷键
 
-<a href="https://youtu.be/pNgNUWSf7C4" title="Link Title"><img src="./images/hero.png" alt="Alternate Text" width="600"/></a>
-
-📡 DeckTap is a lightweight local-network remote for controlling presentations.  
-Use your phone to wirelessly control PowerPoint, Keynote, PDF slideshows — no app installation needed.
-
----
-
-## ✨ Features
-
-- 📱 Control slides via your phone browser
-- 🌐 Works over local Wi-Fi/Hotspot network
-- 🖥 Simulates keyboard arrow keys to navigate slides
-- 🚀 Minimal setup: run a local Node.js server and scan a QR code
-- 🔒 No internet required, **safe** and **private**
-
----
-
-## 📦 Project Structure
-```yaml
-decktap/
-├── client/            # Computer side agent
-│    ├── lan.js        # LAN control
-│    ├── cloud.js      # Connect cloud relay server in the future
-│    └── config.js
-│
-├── controller/        # Mobile phone controller web page
-│    └── index.html
-│
-├── server-cloud/      # Cloud server for remote control in the future
-│    └── server.js
-│
-├── README.md
-├── LICENSE
-├── package.json
-└── .gitignore
-```
----
-
-## 🔧 Prerequisites
-
-### macOS Permissions
-DeckTap uses `@nut-tree/nut-js` to simulate keyboard events. On macOS, you need to grant Accessibility permissions to your terminal:
-
-1. Open **System Settings** > **Privacy & Security** > **Accessibility**
-2. Click the lock icon 🔒 to make changes
-3. Click the **+** button
-4. Select `Terminal.app` (or iTerm, VS Code, etc. depending on what you use)
-5. Check the box next to your terminal app
-
-> **Note**: Without these permissions, DeckTap won't be able to control your presentations.
-
----
-
-## 🚀 Getting Started (LAN Mode)
-1. Install dependencies:
-   ```bash
-   cd decktap-web && npm install && npm run build
-   cd .. && npm install
-   ```
-
-2. Grant accessibility permissions (macOS only):
-   - Follow the steps in [macOS Permissions](#macos-permissions)
-   - Restart your terminal after granting permissions
-
-3. Start the server:
-   ```bash
-   npm start
-   ```
-
-4. Connect with your phone:
-   - Connect your phone to the same WiFi network(only support private WiFi without vlan, not working on campus network) as your computer
-   - Open the displayed URL in your phone's browser or Scan the QR code
-   - <img src="./images/computer-client.png" width="600">
-   - Start controlling your presentation (Use 👉 to switch left and right hand mode)
-   - <img src="./images/phone-controller.png" width="300" >
-  
-
----
-
-## ~🖱️ Standalone Distribution Quick Start~ (Not available yet, an Electron client will be developed in the future)
-
-If you received a **standalone executable version** of DeckTap (such as `decktap-macos`, `decktap-win.exe`, or `decktap-linux`), you can run it directly without installing Node.js or any dependencies.
-
-### Steps
-1. **macOS / Linux users:**
-   - Before the first run, grant execute permission (only needed once):
-     ```bash
-     chmod +x decktap-macos
-     ```
-   - Run:
-     ```bash
-     ./decktap-macos
-     ```
-2. **Windows users:**
-   - Run it in the command prompt:
-     ```bat
-     decktap-win.exe
-     ```
-3. **First run on macOS:** Please follow the terminal prompts to grant Accessibility permissions (see above [macOS Permissions](#macos-permissions)).
-
-4. **Scan the QR code or open the displayed URL on your phone to start controlling your presentation!**
-
----
-
-> If you encounter issues such as failure to run, insufficient permissions, or cannot access the page, please send the terminal error message to the developer for help.
+程序修改步骤：
+1. 主体文件流程：components/Controller.tsx 到 hooks/useWebSocket.ts 到 client/lan.js
+2. Controller.tsx是主页面，配置按钮；
+3. hooks是协议，约定操作码；
+4. lan.js实现各操作码具体操作
