@@ -1,3 +1,3 @@
-D:
-cd D:\server\decktap
+@echo off
+cd /d %~dp0
 npm start
