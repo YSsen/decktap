@@ -1,3 +1,4 @@
+https://github.com/YSsen/decktap.git
 使用说明：  
 1. 先双击运行文件"install.bat"，运行结束再运行文件"start.cmd"，即可使用。
 2. 文件"install.bat"用于安装依赖并打包；
